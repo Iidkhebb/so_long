@@ -5,30 +5,44 @@ void ft_validated(int fd, int *map_size)
     char *prv;
 
     prv = NULL;
-
-    
     while (1)
     {
         line = get_next_line(fd);
         if (line == NULL)
         {
-            ft_put_str("Error\n");
-            exit(0);
+            ft_check_elements("");
             break;
         }
         *map_size += ft_strlen2(line + 1); // read until /n instead of /0
         if (!prv)
-        {
             ft_check_horz_wall(line);
-        }
         else
-        {
             ft_check_sides(line);
-        }
         ft_check_map_shap(line);
+        ft_check_elements(line);
+        ft_check_invalid_char(line);
+        prv = line;
     }
-    
+    ft_check_horz_wall(prv);
+    free(line);
 }
+void ft_check_invalid_char(char *line)
+{
+    int i;
+
+    i = 0;
+    while (line[i] != '\0')
+    {
+        if (line[i] != 'E' && line[i] != 'P' && line[i] != 'C' && line[i] != '1' && line[i] != '0' && line[i] != '\n')
+        {
+            ft_putstr("Error\n");
+            ft_putstr("Invalid map characters\n");
+            exit(0);
+        }
+        i++;
+    }
+}
+
 void ft_open_map(char *file, int *map_size)
 {
     int fd;

@@ -5,9 +5,17 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <errno.h>
-# include "./mlx/mlx.h"
+# include "../mlx/mlx.h"
 # include <stdio.h>
 
+typedef struct  maps
+{
+    int map_rows;
+    int map_column;
+    char **map_load;
+    void *mlx;
+    void	*mlx_win;
+} t_maps;
 
 // Get_next_line
 char	*get_next_line(int fd);
@@ -23,9 +31,20 @@ int ft_strlen2(char *str);
 
 // so_long_utils
 void ft_open_map(char *file, int *map_size);
+int map_extention_validator(char *map_name);
 void ft_check_map_shap(char *line);
+void ft_validated(int fd, int *map_size);
+void ft_check_invalid_char(char *line);
 void ft_check_sides(char *line);
 void ft_check_horz_wall(char *line);
 int ft_char_line_count(char *str);
+void ft_check_elements(char *line);
+int ft_open_mapfile(char *file);
+char **ft_close_map(int fd, char **load[]);
+char **ft_map_loader(char *file, int map_size, t_maps *map);
+
+// Nvidia RTX Render
+void welcome_msg();
+void ft_render(t_maps *map);
 
 #endif
