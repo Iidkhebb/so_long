@@ -3,19 +3,18 @@
 int map_extention_validator(char *map_name)
 {
     int i = 0;
-    while (map_name[i] != '.' && map_name[i])
+    while (map_name[i] != '.')
     {
         i++;
     }
-    if (map_name[i+1] != 'b')
+    printf("%c", map_name[i]);
+    if (map_name[i] != '.' && map_name[i+1] != 'b' && map_name[i+2] != 'e' && map_name[i+3] != 'r' && map_name[i+4] != '\0')
     {
         ft_putstr("an error occurred !\n");
         ft_putstr("Please choose a valid map name\n");
         return (-1);
     }
-    if (map_name[i+1] == 'b' && map_name[i+2] == 'e' && map_name[i+3] == 'r' && map_name[i+4] == '\0')
-        return (0);
-    return(-1);
+    return(0);
 }
 
 int main(int ac, char **av)
