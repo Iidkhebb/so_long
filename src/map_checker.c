@@ -61,36 +61,33 @@ void ft_check_map_shap(char *line)
 void ft_check_elements(char *line)
 {
     int i;
-    static int player;
-    static int collectibles;
-    static int exits;
 
     i = 0;
-    if (!player)
-        player = 0;
-    if (!collectibles)
-        collectibles = 0;
-    if (!exits)
-        exits = 0;
-    if (line[0] == '\0' && (player == 0 || collectibles == 0 || exits == 0))
+    if (!e.player)
+        e.player = 0;
+    if (!e.collectibles)
+        e.collectibles = 0;
+    if (!e.exits)
+        e.exits = 0;
+    if (line[0] == '\0' && (e.player == 0 || e.collectibles == 0 || e.exits == 0 || e.player >= 2))
     {
         ft_putstr("Error\n");
-        if (player == 0 || player >= 2)
+        if (e.player == 0 || e.player >= 2)
             ft_putstr("You must have one player to start the game.\n");
-        if(collectibles == 0)
+        if(e.collectibles == 0)
             ft_putstr("You must have at least one collectibles to start the game.\n");
-        if(exits == 0)
+        if(e.exits == 0)
             ft_putstr("You must have at least one exit to start the game.\n");
         exit(0);    
     }
     while (line[i] != '\0')
     {
         if (line[i] == 'E')
-            exits += 1;
+            e.exits += 1;
         if(line[i] == 'C')
-            collectibles += 1;
+            e.collectibles += 1;
         if(line[i] == 'P')
-            player += 1;
+            e.player += 1;
         i++;
     }
 }

@@ -15,7 +15,18 @@ typedef struct  maps
     char **map_load;
     void *mlx;
     void	*mlx_win;
+    int playerx;
+    int playery;
+    int x;
+    int y;
 } t_maps;
+
+struct  e
+{
+    int collectibles;
+    int player;
+    int exits;
+} e;
 
 // Get_next_line
 char	*get_next_line(int fd);
@@ -46,5 +57,6 @@ char **ft_map_loader(char *file, int map_size, t_maps *map);
 // Nvidia RTX Render
 void welcome_msg();
 void ft_render(t_maps *map);
+void ft_parser(t_maps *map);
 
 #endif
