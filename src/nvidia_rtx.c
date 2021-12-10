@@ -7,14 +7,14 @@ void put_img(char c, int x, int y, t_maps *map)
     int w;
     int h;
     
-    backgroud_parser = mlx_xpm_file_to_image(map->mlx, "img/grass.xpm", &w, &h);
+    backgroud_parser = mlx_xpm_file_to_image(map->mlx, "img/pacman/bg.xpm", &w, &h);
     mlx_put_image_to_window(map->mlx, map->mlx_win, backgroud_parser, x, y);
     mlx_destroy_image(map->mlx, backgroud_parser);
     tswira = mlx_xpm_file_to_image(map->mlx, ft_pull_img(c, map), &w, &h);
     mlx_put_image_to_window(map->mlx, map->mlx_win, tswira, x, y);
     mlx_destroy_image(map->mlx, tswira);
 }
-
+/*
 char *ft_pull_img(char c, t_maps *map)
 {
     if (c == 'P')
@@ -26,6 +26,19 @@ char *ft_pull_img(char c, t_maps *map)
     if (c == 'E')
         return("img/e.xpm");
     return("img/grass.xpm");
+}*/
+
+char *ft_pull_img(char c, t_maps *map)
+{
+    if (c == 'P')
+        return("img/pacman/pacman_player.xpm");
+    if (c == '1')
+        return("img/pacman/blue_wall.xpm");
+    if (c == 'C')
+        return("img/pacman/yellow_dot.xpm");
+    if (c == 'E')
+        return("img/pacman/door.xpm");
+    return("img/pacman/bg.xpm");
 }
 
 void ft_parser(t_maps *map)
