@@ -1,4 +1,5 @@
 #include "so_long.h"
+
 void ft_validated(int fd, int *map_size)
 {
     char *line;
@@ -26,6 +27,17 @@ void ft_validated(int fd, int *map_size)
     ft_check_horz_wall(prv);
     free(line);
 }
+
+void count_elem(char c)
+{
+    if (c == 'E')
+        e.exits += 1;
+    if(c == 'C')
+        e.collectibles += 1;
+    if(c == 'P')
+        e.player += 1;
+}
+
 void ft_check_invalid_char(char *line)
 {
     int i;

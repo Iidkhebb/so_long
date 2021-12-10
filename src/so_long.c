@@ -7,7 +7,6 @@ int map_extention_validator(char *map_name)
     {
         i++;
     }
-    printf("%c", map_name[i]);
     if (map_name[i] != '.' && map_name[i+1] != 'b' && map_name[i+2] != 'e' && map_name[i+3] != 'r' && map_name[i+4] != '\0')
     {
         ft_putstr("an error occurred !\n");

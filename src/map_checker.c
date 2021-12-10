@@ -1,4 +1,5 @@
 #include "so_long.h"
+
 int ft_char_line_count(char *str)
 {
     int i = 0;
@@ -9,6 +10,7 @@ int ft_char_line_count(char *str)
     }
     return(i); 
 }
+
 void ft_check_horz_wall(char *line)
 {
     int i;
@@ -80,14 +82,6 @@ void ft_check_elements(char *line)
             ft_putstr("You must have at least one exit to start the game.\n");
         exit(0);    
     }
-    while (line[i] != '\0')
-    {
-        if (line[i] == 'E')
-            e.exits += 1;
-        if(line[i] == 'C')
-            e.collectibles += 1;
-        if(line[i] == 'P')
-            e.player += 1;
-        i++;
-    }
+    while (line[i++] != '\0')
+        count_elem(line[i]);
 }

@@ -19,6 +19,7 @@ typedef struct  maps
     int playery;
     int x;
     int y;
+
 } t_maps;
 
 struct  e
@@ -26,6 +27,7 @@ struct  e
     int collectibles;
     int player;
     int exits;
+    int mov;
 } e;
 
 // Get_next_line
@@ -53,10 +55,22 @@ void ft_check_elements(char *line);
 int ft_open_mapfile(char *file);
 char **ft_close_map(int fd, char **load[]);
 char **ft_map_loader(char *file, int map_size, t_maps *map);
+void count_elem(char c);
 
 // Nvidia RTX Render
 void welcome_msg();
 void ft_render(t_maps *map);
 void ft_parser(t_maps *map);
+int key_hook(int keycode,t_maps *param);
+char *get_next_frame(t_maps *map);
+char *ft_pull_img(char c, t_maps *map);
+void put_img(char c, int x, int y, t_maps *map);
+int ft_close_window(t_maps *map);
+int is_done(t_maps *param,int y, int x);
 
+// Movement
+void mov_down(t_maps *param);
+void mov_right(t_maps *param);
+void mov_left(t_maps *param);
+void mov_up(t_maps *param);
 #endif
