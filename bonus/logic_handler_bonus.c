@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 char *get_next_frame()
 {
@@ -28,7 +28,7 @@ int is_done(t_maps *param,int y, int x)
         if (e.collectibles == i)
         {
             printf("YOU WIN");
-            ft_close_window(param);
+            exit(0);
         }
         return (0);
     }

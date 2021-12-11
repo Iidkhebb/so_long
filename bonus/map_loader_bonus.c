@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int ft_open_mapfile(char *file)
 {
@@ -14,15 +14,15 @@ int ft_open_mapfile(char *file)
 }
 char **ft_close_map(int fd, char **load[])
 {
-    if (close(fd) == 0)
-    {
-        return(*load);
-    }
-    else
+    if (close(fd) == -1)
     {
         free(*load);
         perror("Error\n");
         exit(0);
+    }
+    else
+    {
+        return(*load);
     }
 }
 char **ft_map_loader(char *file, int map_size, t_maps *map)

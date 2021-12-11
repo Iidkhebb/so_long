@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	buffer_len(char *str_static)
 {
@@ -91,4 +91,20 @@ char	*get_next_line(int fd)
 	str_static = buffer_old_line_rm(str_static);
 	return (new_str);
 }
-
+/*
+int main()
+{
+    int fd;
+    char *line;
+    int i;
+    i =0;
+    fd = open("test.txt", O_RDWR | O_CREAT);
+    //printf("the FD is : %d\n",fd);
+    while(line)
+    {
+        line = get_next_line(fd);
+        printf("%s",line);
+    }
+    return (0);
+}
+*/

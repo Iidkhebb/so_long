@@ -1,10 +1,8 @@
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void ft_putstr(char *str)
 {
-    int i;
-
-    i = 0;
+    int i = 0;
     while (str[i])
     {
         write(1, &str[i], 1);

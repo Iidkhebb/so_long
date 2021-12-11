@@ -1,4 +1,4 @@
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void mov_down(t_maps *param)
 {
@@ -15,7 +15,8 @@ void mov_down(t_maps *param)
         param->map_load[param->playery][param->playerx] = '0';
         param->map_load[param->playery+1][param->playerx] = 'P';
         ft_parser(param);
-        printf("Mouvement : %d\n", e.mov += 1);
+        e.mov += 1;
+        ft_render_initial_text(param); // bonus
     }
 }
 
@@ -34,7 +35,8 @@ void mov_right(t_maps *param)
         param->map_load[param->playery][param->playerx] = '0';
         param->map_load[param->playery][param->playerx+1] = 'P';
         ft_parser(param);
-        printf("Mouvement : %d\n", e.mov += 1);
+        e.mov += 1;
+        ft_render_initial_text(param); // bonus
     }
 }
 
@@ -53,7 +55,8 @@ void mov_left(t_maps *param)
         param->map_load[param->playery][param->playerx] = '0';
         param->map_load[param->playery][param->playerx-1] = 'P';
         ft_parser(param);
-        printf("Mouvement : %d\n", e.mov += 1);
+        e.mov += 1;
+        ft_render_initial_text(param); // bonus
     }
 }
 
@@ -72,7 +75,8 @@ void mov_up(t_maps *param)
         param->map_load[param->playery][param->playerx] = '0';
         param->map_load[param->playery-1][param->playerx] = 'P';
         ft_parser(param);
-        printf("Mouvement : %d\n", e.mov += 1);
+        e.mov += 1;
+        ft_render_initial_text(param); // bonus
     }
 }
 
@@ -88,8 +92,9 @@ int key_hook(int keycode,t_maps *param)
         mov_up(param);
     if (keycode == 53)
     {
-        ft_putstr("You just pressed ESC....\n");
-        ft_close_window(param);
+        mlx_destroy_window(param->mlx, param->mlx_win);
+	    free(param->map_load);
+        exit(0);
     }
     return 0;
 }

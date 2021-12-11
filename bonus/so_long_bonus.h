@@ -1,5 +1,5 @@
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -17,8 +17,12 @@ typedef struct  maps
     void	*mlx_win;
     int playerx;
     int playery;
+
+    int enemy_x; // bonus
+    int enemy_y; // bonus
     int x;
     int y;
+
 } t_maps;
 
 struct  e
@@ -72,4 +76,15 @@ void mov_down(t_maps *param);
 void mov_right(t_maps *param);
 void mov_left(t_maps *param);
 void mov_up(t_maps *param);
+
+
+// text to img  - bonus
+void	ft_render_initial_text(t_maps *map);
+char	*ft_itoa(int n);
+int	len_str(int num);
+char	*ft_strjoin2(char const *s1, char const *s2);
+int mov_enemy(t_maps *param);
+int is_enemy(t_maps *param,int y, int x);
+char *get_next_frame_enemy();
+int loop_enemy(void *param);
 #endif

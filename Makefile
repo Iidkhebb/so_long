@@ -1,27 +1,21 @@
 NAME = so_long
-
 SRCS = $(wildcard src/*.c)
-
+SRCS_B = $(wildcard bonus/*bonus.c)
 
 FLAGS = -Wall -Wextra -Werror
 
-# %.o: %.c
-	#  @ $(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
-	# @ $(CC) -Wall -Wextra -Werror -I/usr/include -Imlx_linux -O3 -c $< -o $@
-
-
-
 all : $(SRCS)
-	@ echo "Compiling for macOs"
-	@ $(CC) $(SRCS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-
+	@ echo "Compiling Mandatory...."
+	@$(CC) $(SRCS) $(FLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+bonus : $(SRCS_B)
+	@ echo "Compiling Bonus...."
+	$(CC) $(SRCS_B) $(FLAGS) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 clean :
-	@ echo "Cleaning bins..."
+	@ echo "Cleaning..."
 	@ rm -rf $(OBJS)
 	@ rm -rf $(wildcard *.o)
-
 fclean : clean
 	@ echo "Cleaning all..."
 	@ rm -rf $(NAME)
-
 re : fclean all
+.PHONY : all clean fclean re bonus
