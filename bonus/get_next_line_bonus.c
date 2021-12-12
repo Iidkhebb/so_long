@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: iidkhebb <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/11 21:39:58 by iidkhebb          #+#    #+#             */
-/*   Updated: 2021/11/13 03:50:59 by iidkhebb         ###   ########.fr       */
+/*   Created: 2021/12/12 17:54:01 by iidkhebb          #+#    #+#             */
+/*   Updated: 2021/12/12 17:56:27 by iidkhebb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ char	*line_cutter(char *str_static)
 {
 	char	*new_str;
 	int		pos;
+	int		i;
 
+	i = 0;
 	if (!str_static)
 		return (NULL);
 	pos = buffer_len(str_static);
@@ -39,7 +41,6 @@ char	*line_cutter(char *str_static)
 	new_str = (char *)malloc((pos + 2) * sizeof(char));
 	if (!new_str)
 		return (NULL);
-	int i = 0;
 	while (str_static[i] != '\n')
 	{
 		new_str[i] = str_static[i];
@@ -52,9 +53,10 @@ char	*line_cutter(char *str_static)
 
 char	*buffer_old_line_rm(char *str_static)
 {
-	int	remaining_len;
-	int	pos;
-	char *buff;
+	int		remaining_len;
+	int		pos;
+	char	*buff;
+
 	if (!str_static)
 		return (NULL);
 	remaining_len = (int)ft_strlen(str_static);
@@ -91,20 +93,3 @@ char	*get_next_line(int fd)
 	str_static = buffer_old_line_rm(str_static);
 	return (new_str);
 }
-/*
-int main()
-{
-    int fd;
-    char *line;
-    int i;
-    i =0;
-    fd = open("test.txt", O_RDWR | O_CREAT);
-    //printf("the FD is : %d\n",fd);
-    while(line)
-    {
-        line = get_next_line(fd);
-        printf("%s",line);
-    }
-    return (0);
-}
-*/
